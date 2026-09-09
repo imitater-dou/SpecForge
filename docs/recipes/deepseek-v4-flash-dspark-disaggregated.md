@@ -1,3 +1,11 @@
+---
+title: DeepSeek-V4-Flash DSpark Disaggregated
+description: Train a five-layer DSpark drafter for DeepSeek-V4-Flash-0731 from scratch on ShareGPT on one 8-GPU B200 node (or a two-node split).
+target: deepseek-ai/DeepSeek-V4-Flash-0731
+method: DSpark
+topology: Disaggregated
+---
+
 # DeepSeek-V4-Flash DSpark disaggregated training
 
 Trains the DSpark drafter in `configs/deepseek-v4-flash-dspark.json` (a
@@ -8,7 +16,7 @@ trainer on GPUs 4-7 (global batch 128; ~4.6 s/step measured). A two-node
 split only changes the endpoints and `CUDA_VISIBLE_DEVICES`.
 
 The flow is the standard disaggregated setup
-(`docs/basic_usage/disaggregated_training.md`); what is DeepSeek-V4-specific:
+(`docs/sections/basic_usage/disaggregated_training.md`); what is DeepSeek-V4-specific:
 
 - **Capture hook**: SGLang `v0.5.18` patched with
   `scripts/apply_sglang_spec_capture_patch.sh --target v0.5.18`, launched
